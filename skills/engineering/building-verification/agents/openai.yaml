@@ -1,0 +1,5 @@
+interface:
+  display_name: "Building Verification"
+  short_description: "Build a project-local verification harness"
+policy:
+  allow_implicit_invocation: false
