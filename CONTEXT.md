@@ -18,11 +18,16 @@ A `wayfinder` unit — a child **Issue** of a `wayfinder:map` holding a *questio
 **Triage role**:
 A canonical state-machine label applied to an **Issue** during triage (e.g. `needs-triage`, `ready-for-afk`). Each role maps to a real label string in the **Issue tracker** via `docs/agents/triage-labels.md`.
 
+**Surface matrix**:
+A project-local decision checklist of the clients, entry points, adapters, contracts, reversible states, documentation, or deployment modes a change may affect. Each row is marked `applies` or `does not apply`; every applicable row must be covered by implementation and verification.
+_Avoid_: platform checklist, blast-radius list
+
 ## Relationships
 
 - An **Issue tracker** holds many **Issues**
 - An **Issue** carries one **Triage role** at a time
 - A **Decision ticket** is an **Issue** (a child of a `wayfinder:map`)
+- Repository instructions may define a **Surface matrix**; implementation and verification account for every applicable row
 
 ## Flagged ambiguities
 

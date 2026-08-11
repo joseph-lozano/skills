@@ -1,11 +1,23 @@
 ---
 name: writing-for-agents
-description: Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.
+description: Write or edit agent-facing instructions. Use when creating or changing a skill, AGENTS.md, CLAUDE.md, or a document agents reach through a pointer.
 ---
 
 Reference for writing any document an agent consumes — a skill, an `AGENTS.md` / `CLAUDE.md`, a doc reached by a pointer. The packaging differs; the writing does not: the same levers make each one predictable — the agent taking the same _process_ every run, not producing the same output.
 
 When the document you're writing is a skill, read [`SKILL-MECHANICS.md`](SKILL-MECHANICS.md) for frontmatter, invocation choice, and router skills.
+
+## Project instructions are operating manuals
+
+A README helps a human or agent understand and adopt the project. Project agent instructions explain how to change it safely and in character. Cache only what the environment cannot cheaply reveal:
+
+- project intent and properties a change must not compromise;
+- a glossary for terms whose meaning or preferred wording is local;
+- hidden footguns and commands whose obvious form is wrong;
+- the expected scope and verification path for common changes;
+- a **surface matrix** of clients, entry points, adapters, contracts, reversible states, docs, or deployment modes that a change may need to cover.
+
+Keep discoverable scripts, directory listings, and package metadata in their real source of truth. Put personal tone and stable cross-project preferences in global instructions rather than making every repository repeat them.
 
 ## Context pointers
 

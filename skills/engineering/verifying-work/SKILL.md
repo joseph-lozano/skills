@@ -13,13 +13,15 @@ This skill verifies. It does not implement the fix or lower the bar after a fail
 
 Read the user request, spec or ticket, every acceptance criterion, the diff, and the repository instructions. Pin the subject with a commit SHA, or with the base SHA plus a content fingerprint or immutable snapshot of every tracked and untracked product change. Keep verification-only artifacts outside that fingerprint.
 
+If repository instructions define a **surface matrix**, walk every row and record `applies` or `does not apply` with a reason. Every applicable client, entry point, adapter, contract, reversible state, documentation surface, or deployment mode must map to a claim or an explicit acceptance-criterion exclusion; an undecided row is missing coverage.
+
 Rewrite each required outcome as a **falsifiable claim**:
 
 > Given <condition>, when <action>, then <observable result and threshold>.
 
 Include the affected user entry points and load-bearing side effects. Do not invent requirements to fill gaps. If the desired result is too ambiguous to observe, ask the user to sharpen it before continuing.
 
-**Done when:** every acceptance criterion and affected user path maps to a falsifiable claim, with out-of-scope behaviour kept out.
+**Done when:** every acceptance criterion, affected user path, and applicable surface-matrix row maps to a falsifiable claim, with out-of-scope behaviour kept out.
 
 ## 2. Design the proof
 

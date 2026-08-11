@@ -13,6 +13,7 @@ Skills I use daily for code work.
 #### User-invoked
 
 - **[ask-matt](./skills/engineering/ask-matt/SKILL.md)** — Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
+- **[agent-retrospective](./skills/engineering/agent-retrospective/SKILL.md)** — Audit agent-session history and turn recurring failures into evidence-backed instruction changes.
 - **[building-verification](./skills/engineering/building-verification/SKILL.md)** — Build a project-local skill and harness that can safely prove the real product works.
 - **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)** — Grilling session that also builds your project's domain model, sharpening terminology and updating `CONTEXT.md` and ADRs inline.
 - **[triage](./skills/engineering/triage/SKILL.md)** — Move issues through a state machine of triage roles.
@@ -26,6 +27,8 @@ Skills I use daily for code work.
 #### Model-invoked
 
 - **[prototype](./skills/engineering/prototype/SKILL.md)** — Build a throwaway prototype to answer a design question: a single shareable HTML file for state/logic, or several toggleable UI variations.
+- **[file-pr](./skills/engineering/file-pr/SKILL.md)** — Prepare and file a concise pull request when the user asks to open, create, file, or draft one.
+- **[babysit-pr](./skills/engineering/babysit-pr/SKILL.md)** — Monitor a pull request through review and CI without letting feedback expand its scope.
 - **[diagnosing-bugs](./skills/engineering/diagnosing-bugs/SKILL.md)** — Disciplined diagnosis loop for hard bugs and performance regressions: build a feedback loop that goes red on this bug → minimise → hypothesise → instrument → fix → regression-test.
 - **[research](./skills/engineering/research/SKILL.md)** — Investigate a question against high-trust primary sources and capture the findings as a cited Markdown file in the repo, run as a background agent.
 - **[tdd](./skills/engineering/tdd/SKILL.md)** — Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
@@ -51,6 +54,7 @@ General workflow tools, not code-specific.
 #### Model-invoked
 
 - **[grilling](./skills/productivity/grilling/SKILL.md)** — Interview the user relentlessly about a plan, decision, or idea until every branch of the design tree is resolved.
+- **[html-communication](./skills/productivity/html-communication/SKILL.md)** — Present plans, specs, findings, reports, comparisons, or UI mock sets as readable HTML artifacts.
 - **[writing-for-agents](./skills/productivity/writing-for-agents/SKILL.md)** — Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.
 
 ## Attribution

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Agent Retrospective"
+  short_description: "Turn agent failures into instruction changes"
+policy:
+  allow_implicit_invocation: false

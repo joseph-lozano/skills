@@ -1,6 +1,6 @@
 ---
 name: prototype
-description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+description: Build a runnable throwaway prototype to answer a design question. Use when the user wants to exercise a state model or behaviour, or compare UI variations inside the product context.
 ---
 
 # Prototype

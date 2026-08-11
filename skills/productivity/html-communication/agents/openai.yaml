@@ -1,0 +1,3 @@
+interface:
+  display_name: "HTML Communication"
+  short_description: "Present readable plans and reports as HTML"
