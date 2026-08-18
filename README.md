@@ -34,6 +34,7 @@ Skills I use daily for code work.
 - **[tdd](./skills/engineering/tdd/SKILL.md)** — Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
 - **[domain-modeling](./skills/engineering/domain-modeling/SKILL.md)** — Actively build and sharpen a project's domain model — challenge terms, stress-test with scenarios, update `CONTEXT.md` and ADRs inline.
 - **[codebase-design](./skills/engineering/codebase-design/SKILL.md)** — Shared discipline and vocabulary for designing deep modules: small interfaces, clean seams, testable through the interface.
+- **[logging-wide-events](./skills/engineering/logging-wide-events/SKILL.md)** — Design and review safe, correlated operational logging around one canonical wide event per unit of work.
 - **[code-review](./skills/engineering/code-review/SKILL.md)** — Three-axis review of the diff since a fixed point: **Standards**, **Spec**, and an evidence-bound **Adversarial** attempt to break the change, run as parallel sub-agents.
 - **[verifying-work](./skills/engineering/verifying-work/SKILL.md)** — Prove completed code changes through reproducible evidence from the real user-facing surface, with a fail-closed verdict.
 - **[resolving-merge-conflicts](./skills/engineering/resolving-merge-conflicts/SKILL.md)** — Work through an in-progress git merge or rebase conflict hunk by hunk, resolving by intent traced to each side's primary source, then finish the operation — never `--abort`.
@@ -61,3 +62,4 @@ General workflow tools, not code-specific.
 
 - This repository is a personal fork of [Matt Pocock's skills](https://github.com/mattpocock/skills), adapted and extended for my own workflows and opinions.
 - **[building-verification](./skills/engineering/building-verification/SKILL.md)** is adapted from [Lauren Tan's `create-verification-skill`](https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md) under the MIT License.
+- **[logging-wide-events](./skills/engineering/logging-wide-events/SKILL.md)** adapts the wide-event discipline from [Boris Tane's `logging-best-practices`](https://github.com/boristane/agent-skills/tree/main/skills/logging-best-practices).

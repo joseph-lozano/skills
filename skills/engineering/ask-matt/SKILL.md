@@ -55,12 +55,13 @@ Not feature work — upkeep.
 - **`/building-verification`** — run when a repository lacks a safe, replayable way to prove the real product works. It interviews the product's **Surface, Run, Drive, Observe, and Isolate** paths, then creates a project-local verifier, feature map, doctor, evidence contract, and owned-resource cleanup. It builds the runway that `/verifying-work` later uses; it does not verify a particular change itself.
 - **`/agent-retrospective`** — audit real agent-session history when the collaboration itself keeps producing friction. It counts and samples corrections, tool misuse, scope growth, premature stops, and verification gaps; controls for model and task mix; then proposes the narrowest evidence-backed fix. The user chooses exact changes before it hands approved edits to `/writing-for-agents`.
 
-## Vocabulary underneath
+## Disciplines underneath
 
-Two model-invoked references that run *beneath* the other skills — each the single source of truth for its vocabulary. Reach for them directly when the **words**, not the process, are the problem; or let the skills above pull them in.
+Three model-invoked references run *beneath* the other skills. Reach for them directly when their design discipline is the problem, or let the skills above pull them in.
 
 - **`/domain-modeling`** — sharpen the project's *domain* language: challenge a fuzzy term, resolve an overloaded word ("account" doing three jobs), record a hard-to-reverse decision as an ADR. It's the active discipline `/grill-with-docs` drives to keep `CONTEXT.md` a clean glossary.
 - **`/codebase-design`** — the deep-module vocabulary (module, interface, depth, seam, adapter, leverage, locality) for designing a module's *shape*: a lot of behaviour behind a small interface at a clean seam. `/tdd` and `/improve-codebase-architecture` both speak it.
+- **`/logging-wide-events`** — the operational-logging discipline: one safe, correlated canonical event per unit of work, with additional events only for independently meaningful occurrences. Reach for it when implementation, diagnosis, or review changes what a system records.
 
 ## Phase boundaries
 

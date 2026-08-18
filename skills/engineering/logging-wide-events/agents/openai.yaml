@@ -1,0 +1,3 @@
+interface:
+  display_name: "Logging Wide Events"
+  short_description: "Structure safe, correlated operational logs"

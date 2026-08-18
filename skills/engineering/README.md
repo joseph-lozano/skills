@@ -30,6 +30,7 @@ Model- or user-reachable (rich trigger phrasing so the model can reach for them)
 - **[tdd](./tdd/SKILL.md)** — Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
 - **[domain-modeling](./domain-modeling/SKILL.md)** — Actively build and sharpen a project's domain model — challenge terms, stress-test with scenarios, update `CONTEXT.md` and ADRs inline.
 - **[codebase-design](./codebase-design/SKILL.md)** — Shared discipline and vocabulary for designing deep modules: small interfaces, clean seams, testable through the interface.
+- **[logging-wide-events](./logging-wide-events/SKILL.md)** — Design and review safe, correlated operational logging around one canonical wide event per unit of work.
 - **[code-review](./code-review/SKILL.md)** — Three-axis review of the diff since a fixed point: **Standards**, **Spec**, and an evidence-bound **Adversarial** attempt to break the change, run as parallel sub-agents.
 - **[verifying-work](./verifying-work/SKILL.md)** — Prove completed code changes through reproducible evidence from the real user-facing surface, with a fail-closed verdict.
 - **[resolving-merge-conflicts](./resolving-merge-conflicts/SKILL.md)** — Work through an in-progress git merge or rebase conflict hunk by hunk, resolving by intent traced to each side's primary source, then finish the operation — never `--abort`.
