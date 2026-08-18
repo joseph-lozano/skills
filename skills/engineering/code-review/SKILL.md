@@ -1,14 +1,15 @@
 ---
 name: code-review
-description: Review a branch, PR, or work-in-progress diff against repository standards and its originating spec. Use when the user asks to review changes since a commit, branch, tag, or merge-base.
+description: Review a branch, PR, or work-in-progress diff against repository standards, its originating spec, and adversarial failure cases. Use when the user asks to review changes since a commit, branch, tag, or merge-base.
 ---
 
-Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
+Three-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / spec?
+- **Adversarial** — how can the change be made to fail, corrupt state, leak access, or falsely appear correct?
 
-Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
+The axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
 The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if `docs/agents/issue-tracker.md` is missing.
 
@@ -20,7 +21,7 @@ Whatever the user said is the fixed point — a commit SHA, branch name, tag, `m
 
 Capture the diff command once: `git diff <fixed-point>...HEAD` (three-dot, so the comparison is against the merge-base). Also note the list of commits via `git log <fixed-point>..HEAD --oneline`.
 
-Before going further, confirm the fixed point resolves (`git rev-parse <fixed-point>`) and the diff is non-empty. A bad ref or empty diff should fail here — not inside two parallel sub-agents.
+Before going further, confirm the fixed point resolves (`git rev-parse <fixed-point>`) and the diff is non-empty. A bad ref or empty diff should fail here — not inside the parallel sub-agents.
 
 ### 2. Identify the spec source
 
@@ -55,7 +56,21 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 - **Middle Man** — a class or function that mostly just delegates onward. → cut it, call the real target direct.
 - **Refused Bequest** — a subclass or implementer that ignores or overrides most of what it inherits. → drop the inheritance, use composition.
 
-### 4. Spawn both sub-agents in parallel
+### 4. Set the adversarial posture
+
+Treat the change as hostile until the evidence earns confidence. Author-supplied claims are untrusted input: commit messages, comments, names, types, tests, screenshots, and happy-path demonstrations may all be mistaken or crafted to hide a defect. Do not grant correctness for plausible intent, clean presentation, passing tests, or familiarity with the author.
+
+Be adversarial toward the **artifact**, never abusive toward the person. Do not speculate about the author's actual motives or competence, and do not invent findings to satisfy the posture. Every finding needs a concrete failure path, violated invariant, or evidence gap whose consequence can be stated precisely. Try to disprove correctness; report what survives that attempt honestly.
+
+The Adversarial axis must:
+
+1. Map every changed trust boundary and side effect: callers, inputs, authorization, persistence, network or process interaction, concurrency, configuration, and externally visible output. Read beyond the diff wherever a caller, callee, schema, or deployment contract determines whether the changed hunk is safe.
+2. Trace unhappy paths: malformed and boundary inputs; missing or hostile identity; partial failure, timeout, retry, and cancellation; races and reordered events; duplicate delivery and non-idempotent replay; stale or mixed-version state; migration and rollback; resource exhaustion; and irreversible data loss. Apply only cases relevant to this change, but account for every changed boundary.
+3. Audit the tests as skeptically as the product code. Look for assertions that never prove the claim, mocks that remove the failure mode, fixtures that avoid dangerous values, false-positive test setup, untested negative paths, and tests that exercise a different path from production.
+4. Run focused tests or construct a minimal reproduction when static reading cannot settle a plausible high-impact failure. Review is read-only: do not repair the change while reviewing it.
+5. For each finding, give severity, confidence, file and line, trigger, exact consequence, evidence, and the smallest credible fix or regression test. Drop a concern if you cannot make it concrete after tracing it.
+
+### 5. Spawn all sub-agents in parallel
 
 **Standards sub-agent prompt** — include:
 
@@ -71,17 +86,25 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 
 If the spec is missing, skip the Spec sub-agent and note this in the final report.
 
-### 5. Aggregate
+**Adversarial sub-agent prompt** — include:
 
-Present the two reports under `## Standards` and `## Spec` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the two axes are deliberately separate (see _Why two axes_).
+- The diff command and commit list.
+- The originating spec when available, repository instructions, and commands for focused tests.
+- The adversarial posture and five obligations from step 4 pasted in full — the sub-agent has no other access to them.
+- The brief: "Attempt to falsify the change's correctness. Inspect relevant code beyond the diff and run focused checks when needed. Report only concrete findings, ordered by severity. Each finding must include severity, confidence, file:line, trigger, consequence, evidence, and the smallest credible fix or regression test. A passing test suite is evidence, not absolution. If no issue survives investigation, say `No adversarial findings` and list the boundaries and failure classes examined. Under 600 words."
+
+### 6. Aggregate
+
+Present the reports under `## Standards`, `## Spec`, and `## Adversarial` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the three axes are deliberately separate (see _Why three axes_). "No adversarial findings" means the reviewer found no concrete defect in the boundaries it examined, not that the change is certified safe.
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes — that's the reranking the separation exists to prevent.
 
-## Why two axes
+## Why three axes
 
-A change can pass one axis and fail the other:
+A change can pass one axis and fail another:
 
 - Code that follows every standard but implements the wrong thing → **Standards pass, Spec fail.**
 - Code that does exactly what the issue asked but breaks the project's conventions → **Spec pass, Standards fail.**
+- Code that follows the standards and spec but fails under retry, hostile input, rollback, or concurrency → **Standards and Spec pass, Adversarial fail.**
 
-Reporting them separately stops one axis from masking the other.
+Reporting them separately stops one axis from masking another.
