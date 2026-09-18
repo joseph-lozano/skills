@@ -9,13 +9,13 @@ Build operational logs around one **wide event** per **unit of work**: an author
 
 ## Vocabulary
 
-**Unit of work** — one operation whose outcome matters: an HTTP request, queue message, scheduled job, CLI invocation, batch operation, workflow step, or streaming session.
+**Unit of work**: one operation whose outcome matters: an HTTP request, queue message, scheduled job, CLI invocation, batch operation, workflow step, or streaming session.
 
-**Wide event** — the unit's canonical completion record. It carries enough safe, bounded context to query the unit by outcome, timing, deployment, correlation identifiers, and relevant domain dimensions.
+**Wide event**: the unit's canonical completion record. It carries enough safe, bounded context to query the unit by outcome, timing, deployment, correlation identifiers, and relevant domain dimensions.
 
-**Owner** — the boundary responsible for the unit's lifecycle. The owner initializes, enriches, and emits its wide event. Inner layers return or annotate errors instead of logging the same failure again.
+**Owner**: the boundary responsible for the unit's lifecycle. The owner initializes, enriches, and emits its wide event. Inner layers return or annotate errors instead of logging the same failure again.
 
-**Independent event** — a separately queryable occurrence with meaning beyond narrating the unit's implementation steps: a security decision, externally visible state transition, retry attempt operators act on, progress checkpoint, circuit-breaker transition, or process lifecycle event.
+**Independent event**: a separately queryable occurrence with meaning beyond narrating the unit's implementation steps: a security decision, externally visible state transition, retry attempt operators act on, progress checkpoint, circuit-breaker transition, or process lifecycle event.
 
 ## Process
 
@@ -67,13 +67,13 @@ Choose the unit and completion signal explicitly for the workload:
 
 Follow the repository's schema when one exists. Otherwise choose stable fields from the groups that answer real operational questions:
 
-- **Identity** — event name, schema version, service, operation, unit kind.
-- **Correlation** — trace and span IDs; request, message, job, or workflow IDs where useful and permitted.
-- **Outcome** — a bounded value from the workload contract, such as `success`, `rejected`, `skipped`, `deduplicated`, `retry_scheduled`, `timeout`, `cancelled`, `abandoned`, or `failure`; duration; protocol status; retry count.
-- **Deployment** — environment, version or commit, region, runtime, instance class.
-- **Domain** — allowlisted identifiers, state, feature decisions, plan or product dimensions needed to explain the outcome.
-- **Dependencies** — bounded counts, outcomes, and timings for important downstream work.
-- **Error** — sanitized error type, stable code, retryability, and an approved safe message or stack representation.
+- **Identity**: event name, schema version, service, operation, unit kind.
+- **Correlation**: trace and span IDs; request, message, job, or workflow IDs where useful and permitted.
+- **Outcome**: a bounded value from the workload contract, such as `success`, `rejected`, `skipped`, `deduplicated`, `retry_scheduled`, `timeout`, `cancelled`, `abandoned`, or `failure`; duration; protocol status; retry count.
+- **Deployment**: environment, version or commit, region, runtime, instance class.
+- **Domain**: allowlisted identifiers, state, feature decisions, plan or product dimensions needed to explain the outcome.
+- **Dependencies**: bounded counts, outcomes, and timings for important downstream work.
+- **Error**: sanitized error type, stable code, retryability, and an approved safe message or stack representation.
 
 There is no target field count. Include fields with diagnostic or operational value; keep every value safe and bounded.
 

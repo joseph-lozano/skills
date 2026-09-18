@@ -14,11 +14,11 @@ This skill creates verification infrastructure. `/verifying-work` uses that infr
 
 Read the repository before asking the user. Ground these five answers in existing commands, code, and documentation:
 
-- **Surface** — what users touch: web UI, CLI or TUI, desktop or mobile app, API, library, or more than one of these.
-- **Run** — how the real product builds and starts, including readiness, ports, environment, authentication, fixtures, and seed data.
-- **Drive** — how an agent can control each surface. Prefer the project's existing browser, E2E, PTY, HTTP, or consumer harness.
-- **Observe** — which visible outcomes and load-bearing side effects can be captured as evidence.
-- **Isolate** — which ports, data directories, browser profiles, accounts, queues, and external systems a verification run could share or corrupt.
+- **Surface**: what users touch: web UI, CLI or TUI, desktop or mobile app, API, library, or more than one of these.
+- **Run**: how the real product builds and starts, including readiness, ports, environment, authentication, fixtures, and seed data.
+- **Drive**: how an agent can control each surface. Prefer the project's existing browser, E2E, PTY, HTTP, or consumer harness.
+- **Observe**: which visible outcomes and load-bearing side effects can be captured as evidence.
+- **Isolate**: which ports, data directories, browser profiles, accounts, queues, and external systems a verification run could share or corrupt.
 
 Run the narrowest existing build-only check while interviewing. Start the product only after drafting a provisional isolated launch and cleanup plan. Even an exploratory launch needs a unique run ID, isolated resources, an ownership record, and guaranteed cleanup; otherwise return `BLOCKED`. A broken baseline is also `BLOCKED`: report the failure instead of writing commands against an imagined working product. Ask the user only about choices the repository cannot answer, especially unsafe external effects or multiple equally primary surfaces.
 
@@ -32,12 +32,12 @@ Create `verifying-<product>/SKILL.md` with valid frontmatter and a model-facing 
 
 The generated skill must contain exact, repository-specific instructions under these headings:
 
-- **Launch** — build and start commands, unique run ID, isolated resources, readiness signal, and resource ownership record. Short-lived CLIs launch once per drive rather than pretending to be a server.
-- **Doctor** — one read-only check that proves the expected build or revision is ready, attached to the intended ports, data, profile, account, queue, project, and external endpoints, authenticated where needed, and safe to drive. A generic healthy response does not prove instance identity. Doctor fails closed when identity or ownership is uncertain.
-- **Drive** — literal commands and stable handles from this product. Prefer ARIA roles, accessible labels, data attributes, command names, prompts, and routes over coordinates or tab order.
-- **Evidence** — exact artifact location and what records the action, resulting user-visible state, and load-bearing side effects. Preserve commands, stdout, stderr, exit codes, traces, screenshots, logs, or read-only state queries as appropriate; redact secrets and personal data.
-- **Cleanup** — remove scratch state and stop only resources owned by this run. Before acting, revalidate immutable ownership such as process start identity plus run marker, container ID or label, or a marker inside a run-owned directory. A stale PID, port, or path is not ownership proof. Refuse uncertain cleanup and report the exact manual action instead. Cleanup runs after failed attempts and preserves evidence.
-- **Feature map** — where the maintained index and feature recipes live, and how to select the affected paths.
+- **Launch**: build and start commands, unique run ID, isolated resources, readiness signal, and resource ownership record. Short-lived CLIs launch once per drive rather than pretending to be a server.
+- **Doctor**: one read-only check that proves the expected build or revision is ready, attached to the intended ports, data, profile, account, queue, project, and external endpoints, authenticated where needed, and safe to drive. A generic healthy response does not prove instance identity. Doctor fails closed when identity or ownership is uncertain.
+- **Drive**: literal commands and stable handles from this product. Prefer ARIA roles, accessible labels, data attributes, command names, prompts, and routes over coordinates or tab order.
+- **Evidence**: exact artifact location and what records the action, resulting user-visible state, and load-bearing side effects. Preserve commands, stdout, stderr, exit codes, traces, screenshots, logs, or read-only state queries as appropriate; redact secrets and personal data.
+- **Cleanup**: remove scratch state and stop only resources owned by this run. Before acting, revalidate immutable ownership such as process start identity plus run marker, container ID or label, or a marker inside a run-owned directory. A stale PID, port, or path is not ownership proof. Refuse uncertain cleanup and report the exact manual action instead. Cleanup runs after failed attempts and preserves evidence.
+- **Feature map**: where the maintained index and feature recipes live, and how to select the affected paths.
 
 Prefer direct existing commands. Add a helper only when it makes the procedure safer or replayable; make it executable, document every invocation in the generated skill, and keep it inside the generated skill unless the repository already owns that responsibility elsewhere.
 
@@ -91,8 +91,8 @@ A verifier that has not completed this loop is `BLOCKED`, not ready.
 
 Return exactly one outcome:
 
-- **READY** — link the generated skill and feature map; name every discovery root; state the launch, doctor, and cleanup commands; identify the feature proved and its positive and negative calibration artifacts; state concurrency limits and unseeded surfaces.
-- **BLOCKED** — identify the failed step, exact command and output, resources cleaned up, and the smallest next action. Leave no half-documented verifier presented as usable.
+- **READY**: link the generated skill and feature map; name every discovery root; state the launch, doctor, and cleanup commands; identify the feature proved and its positive and negative calibration artifacts; state concurrency limits and unseeded surfaces.
+- **BLOCKED**: identify the failed step, exact command and output, resources cleaned up, and the smallest next action. Leave no half-documented verifier presented as usable.
 
 ---
 

@@ -9,7 +9,7 @@ Create a readable artifact for a human outside the terminal. This skill communic
 
 ## Choose the right artifact
 
-Use this skill for a plan, spec, findings, report, comparison, or static set of UI mocks. If the question requires the user to exercise behaviour, push a state model through cases, or judge UI inside the real product context, run `/prototype` instead.
+Use this skill for a plan, spec, findings, report, comparison, or static set of UI mocks. If the question requires the user to exercise behaviour, push a state model through cases, or judge UI inside the real product context, call the Skill tool with "prototype" instead.
 
 ## Build one stable file
 

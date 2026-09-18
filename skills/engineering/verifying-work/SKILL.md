@@ -34,7 +34,7 @@ Every behavioural claim starts at the affected user-facing entry point and obser
 3. A focused checker or harness that can be rerun.
 4. A structured human check when automation cannot reach the surface.
 
-Build, typecheck, lint, and unit tests are supporting evidence unless they cross the claimed surface. Expected results must come from the contract, a known-good fixture, or a captured baseline—not from the implementation being checked. For migrations, refactors, and performance work, capture the baseline before judging the treatment. Calibrate every new or modified checker against a known-negative fixture, baseline, or control that proves it can fail; an uncalibrated checker is `INCONCLUSIVE`.
+Build, typecheck, lint, and unit tests are supporting evidence unless they cross the claimed surface. Expected results must come from the contract, a known-good fixture, or a captured baseline, not from the implementation being checked. For migrations, refactors, and performance work, capture the baseline before judging the treatment. Calibrate every new or modified checker against a known-negative fixture, baseline, or control that proves it can fail; an uncalibrated checker is `INCONCLUSIVE`.
 
 Treat tools as drivers, not proof. "The browser test passed" is weak; "submitted checkout through the browser, observed the success state, one payment request, and one persisted order, with the trace preserved" names the action and observations. Apply the same pattern to APIs (response plus downstream state), CLIs (invocation, streams, exit code, and changed state), libraries (a public-API consumer), migrations (baseline versus treatment), and performance work (repeated measurements against a threshold).
 
@@ -49,7 +49,7 @@ Write a proof plan with one row per claim:
 
 ## 3. Execute independently
 
-When the harness exposes subagents, dispatch verification to a fresh one. Give it the authoritative request, spec or ticket, acceptance criteria, repository instructions, subject identifier, and proof plan—not the implementer's reasoning alone. It must challenge claim coverage as well as execute the plan. Prefer a different model family when one is available; self-review does not count as independent review.
+When the harness exposes subagents, dispatch verification to a fresh one. Give it the authoritative request, spec or ticket, acceptance criteria, repository instructions, subject identifier, and proof plan, not the implementer's reasoning alone. It must challenge claim coverage as well as execute the plan. Prefer a different model family when one is available; self-review does not count as independent review.
 
 When no independent context exists, same-context verification can establish `VERIFIED` only through deterministic checks whose outputs mechanically decide every claim. Evidence requiring agent interpretation is `INCONCLUSIVE`.
 
@@ -57,7 +57,7 @@ For each claim:
 
 1. Confirm the environment is healthy and isolated enough for the result to mean anything.
 2. Drive the real user path. Test-only endpoints and internal setters prove only themselves.
-3. Capture the action and resulting state, including side effects—not only the final screen or exit code.
+3. Capture the action and resulting state, including side effects, not only the final screen or exit code.
 4. Record exact commands, inputs, outputs, and artifact paths. Redact secrets and personal data.
 5. Repeat measurements where noise or flakiness could change the verdict.
 
@@ -71,15 +71,15 @@ A decisive failure stops verification. Capture it and report it to the implement
 
 Use exactly one verdict:
 
-- **VERIFIED** — every required claim and repository check passed with reproducible evidence.
-- **NOT VERIFIED** — at least one required claim or repository check failed. A known failure takes precedence over checks not yet run.
-- **INCONCLUSIVE** — no decisive failure was established, but evidence is missing, noisy, confounded, blocked on a human or environment, or does not cover every required path.
+- **VERIFIED**: every required claim and repository check passed with reproducible evidence.
+- **NOT VERIFIED**: at least one required claim or repository check failed. A known failure takes precedence over checks not yet run.
+- **INCONCLUSIVE**: no decisive failure was established, but evidence is missing, noisy, confounded, blocked on a human or environment, or does not cover every required path.
 
 Changing the verified code state invalidates the verdict wherever the change could affect the proof. `INCONCLUSIVE` is a stop, never a soft pass.
 
 ## 5. Hand back the proof
 
-Publish the proof where the work lives—a ticket or PR when available, otherwise the conversation. Link artifacts instead of paraphrasing them. Keep sensitive evidence local and say where it is.
+Publish the proof where the work lives, such as a ticket or PR when available, otherwise the conversation. Link artifacts instead of paraphrasing them. Keep sensitive evidence local and say where it is.
 
 ```markdown
 ## Verification: VERIFIED | NOT VERIFIED | INCONCLUSIVE

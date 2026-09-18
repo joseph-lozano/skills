@@ -54,4 +54,4 @@ Immediately before filing, recheck that the branch, diff, and existing-PR state 
 
 Create a ready-for-review PR unless the user approved a draft. Do not add comments, reviewers, labels, auto-merge, or other external messages/actions that were not included in the approval.
 
-Return the PR URL and the exact checks that remain. Monitoring is a separate concern: run `/babysit-pr` only when the user also asks to watch, monitor, or babysit the PR.
+Return the PR URL and the exact checks that remain. Monitoring is a separate concern: call the Skill tool with "babysit-pr" only when the user also asks to watch, monitor, or babysit the PR.
