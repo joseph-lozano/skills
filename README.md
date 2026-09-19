@@ -50,6 +50,7 @@ General workflow tools, not code-specific.
 - **[handoff](./skills/productivity/handoff/SKILL.md)**: Compact a conversation into a document another agent can continue from.
 - **[teach](./skills/productivity/teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
 - **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can (filled in async, or together over a meeting).
+- **[unslop](./skills/productivity/unslop/SKILL.md)**: Remove AI tells from writing while preserving its meaning and tone.
 - **[wait-what](./skills/productivity/wait-what/SKILL.md)**: Fire this the moment a message doesn't land. The agent re-pitches it with the context you're missing, in plain English, using your `CONTEXT.md` vocabulary.
 
 #### Model-invoked
@@ -63,3 +64,4 @@ General workflow tools, not code-specific.
 - This repository is a personal fork of [Matt Pocock's skills](https://github.com/mattpocock/skills), adapted and extended for my own workflows and opinions.
 - **[building-verification](./skills/engineering/building-verification/SKILL.md)** is adapted from [Lauren Tan's `create-verification-skill`](https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md) under the MIT License.
 - **[logging-wide-events](./skills/engineering/logging-wide-events/SKILL.md)** adapts the wide-event discipline from [Boris Tane's `logging-best-practices`](https://github.com/boristane/agent-skills/tree/main/skills/logging-best-practices).
+- **[unslop](./skills/productivity/unslop/SKILL.md)** is copied from [Lauren Tan's `unslop`](https://github.com/cursor/plugins/blob/032be146865d973682535de75f2287da438550bf/pstack/skills/unslop/SKILL.md) under the MIT License.
