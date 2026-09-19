@@ -23,7 +23,7 @@ This directory is the maintained source for verifying [product]'s user-facing be
 
 ## Features
 
-- [Feature name](./feature-name.md) — [user-visible scope].
+- [Feature name](./feature-name.md): [user-visible scope].
 ```
 
 ## Recipe: `features/<feature>.md`
@@ -35,7 +35,7 @@ This directory is the maintained source for verifying [product]'s user-facing be
 
 ## Sub-features
 
-- `[short-id]` — [one observable behavior].
+- `[short-id]`: [one observable behavior].
 
 ## How to get to it (user POV)
 

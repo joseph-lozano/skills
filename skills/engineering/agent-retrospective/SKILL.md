@@ -63,12 +63,12 @@ A single bad run is a reason to investigate, not yet a global rule.
 
 Prefer the narrowest durable correction:
 
-1. **Environment or tooling** — make the safe command obvious, encode a check, or remove a footgun.
-2. **Code or module design** — improve the seam when instructions are compensating for hard-to-change code.
-3. **Project instructions** — project invariants, vocabulary, surface matrices, and local hazards.
-4. **Global instructions** — stable personal preferences that genuinely apply everywhere.
-5. **Existing skill** — repair its trigger, steps, or completion criterion.
-6. **New skill** — only for a reusable process with an independent invocation condition.
+1. **Environment or tooling**: make the safe command obvious, encode a check, or remove a footgun.
+2. **Code or module design**: improve the seam when instructions are compensating for hard-to-change code.
+3. **Project instructions**: project invariants, vocabulary, surface matrices, and local hazards.
+4. **Global instructions**: stable personal preferences that genuinely apply everywhere.
+5. **Existing skill**: repair its trigger, steps, or completion criterion.
+6. **New skill**: only for a reusable process with an independent invocation condition.
 
 Do not solve a discoverable command, transient model quirk, or one-off preference by permanently expanding global context.
 
@@ -85,7 +85,7 @@ Present the complete proposal and stop. Do not edit instructions or skills until
 
 ## 6. Apply selected changes
 
-For approved proposals, run the `/writing-for-agents` skill. Preserve invocation boundaries, update every repository index and router required by local instructions, and keep one source of truth for each rule.
+For approved proposals, call the Skill tool with "writing-for-agents". Preserve invocation boundaries, update every repository index and router required by local instructions, and keep one source of truth for each rule.
 
 ## 7. Evaluate and revisit
 
